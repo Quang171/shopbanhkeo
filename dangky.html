@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./giao dien/CSS/base.css">
+    <link rel="stylesheet" href="./giao dien/CSS/main.css">
+
+</head>
+<body>
+    
+<header class="header fad">
+    <div class="logo">
+         <a href="index.html"><img  src="./giao dien/img/logo3-removebg-preview.png" alt="11 SHOP logo"></a>
+    </div>
+
+    <div class ="menu">
+        <li><a href="">11 SHOP</a></li>
+        <li><a href="">SẢN PHẨM</a>
+            <ul class="sub-menu">
+                <li><a href="">BÁNH TƯƠI</a>
+                    <ul >
+                        <li><a class="sub-menu-item" href="">Bánh trứng tươi</a></li>
+                        <li><a class="sub-menu-item" href="">Bánh mì tươi</a></li>
+                    </ul>
+                
+                </li>
+                <li><a href="">BÁNH KHÔ</a>
+                    <ul>
+                        <li><a class="sub-menu-item" href="">Bánh gạo Hàn Quốc</a></li>
+                        <li><a class="sub-menu-item" href="">Bánh Kenju</a></li>
+                    </ul>
+                
+                </li>
+                <li><a href="">SẢN PHẨM TẾT NỘI ĐỊA</a>
+                    <ul>
+                        <li><a class="sub-menu-item" href="">Bánh hộp thiếc</a></li>
+                        <li><a class="sub-menu-item" href="">Bánh đồng tiền</a></li>
+                    </ul>
+                </li>
+                <li><a href="">HÀNG NHẬP KHẨU</a></li>
+            </ul>
+        
+        </li>
+        <li><a href="">KHUYẾN MÃI</a></li>
+        <li><a href="">TIN TỨC</a></li>
+        <li><a href="">LIÊN HỆ</a></li>
+
+    </div>
+
+    <div class="others">
+        <li ><input placeholder="Tìm kiếm" type="text">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </li>
+        <li><a href=""><i class="fa-solid fa-circle-user"></i></a></li>
+        
+        <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </div>
+
+</header>
+
+<section class="form-container-all">
+    
+    <div class="form-container">
+       <h2>Tạo tài khoản cá nhân</h2>
+       <form>
+         <div class="form-group">
+           <label>Email đăng kí</label>
+           <input type="email" placeholder="you@example.com" required>
+         </div>
+   
+         <div class="form-group">
+           <label>Tên</label>
+           <input type="text" placeholder="Họ và tên" required>
+         </div>
+   
+         <div class="form-group">
+           <label>Số điện thoại</label>
+           <input type="text" placeholder="0123456789" required>
+         </div>
+   
+         <div class="form-group">
+           <label>Giới tính</label>
+           <div class="gender-options">
+             <label><input type="radio" name="gender" value="Nam" checked> Nam</label>
+             <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+           </div>
+         </div>
+   
+         <div class="form-group">
+           <label>Mật khẩu</label>
+           <input type="password" required>
+         </div>
+   
+         <div class="form-group">
+           <label>Nhập lại mật khẩu</label>
+           <input type="password" required>
+         </div>
+   
+         <div class="form-group">
+           <label>Địa chỉ</label>
+           <input type="text" placeholder="Xã - Phường - Tỉnh - Thành phố">
+         </div>
+   
+         <div class="button-group">
+           <button type="submit" class="btn btn-primary">ĐĂNG KÍ</button>
+           <button type="reset" class="btn btn-reset">LÀM MỚI</button>
+         </div>
+       </form>
+     </div>
+</section>
+
+
+
+
+
+<section class="footer">
+
+    <div class="hotline">
+       <h3>Hotline: 0912345678</h3>
+   </div>
+   
+    <div class="footer-bottom">
+       <p>Bản quyền thuộc về 11 Shop</p>
+   
+   </div> 
+</section>
+  
+</body>
+
+<script>
+    const imgPosition = document.querySelectorAll(".aspect-ratio-169 img");
+    const imgContainer = document.querySelector(".aspect-ratio-169");
+    const dotItems = document.querySelectorAll(".dot");
+    let imgNumber = imgPosition.length;
+    let index = 0;
+    imgPosition.forEach(function(image, index){
+        image.style.left = index*100 + "%";
+        dotItems[index].addEventListener("click",function(){
+            slider(index);
+
+        })
+
+    });
+
+    function imgSlider(){
+        index++;
+        if(index>=imgNumber){
+            index =0;
+        }
+        slider(index);
+    }
+    function slider(index){
+        imgContainer.style.left = "-" +index*100+ "%";
+        const dotActive = document.querySelector(".active");
+        dotActive.classList.remove("active");
+        dotItems[index].classList.add("active");
+    }
+
+    // setInterval(imgSlider, 3000);
+</script>
+</html>
