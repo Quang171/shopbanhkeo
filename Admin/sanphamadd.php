@@ -51,9 +51,10 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
                     <input name ="sanpham_discount" required type="text" placeholder="Giá khuyến mãi">
                     <textarea required name="sanpham_mota" id="editor1" cols="30" rows="10" placeholder="Mô tả sản phẩm"></textarea>
                     <label for="">Ảnh sản phẩm <span style="color: red;">*</span></label>
-                    <input name="sanpham_img" required type="file">
+                    <input name="sanpham_img" required type="file" id="sanpham_img_input">
+                    <div class="image-preview" style="margin-top: 10px;"></div>
+                    <input type="hidden" value="" id="sanpham_img_hidden" name="sanpham_img">
                     <label for="">Ảnh mô tả <span style="color: red;">*</span></label>
-
                     <input name ="sanpham_img_mota" multiple required type="file">
                     <button type="submit">Thêm</button>
                 </form>
@@ -66,6 +67,22 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
     filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
     filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
 });
+  </script>
+
+  <script>
+    $('#sanpham_img').on('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = `
+                    <img src="${e.target.result}" style="max-width: 200px; max-height: 200px; object-fit: contain;">
+                `;
+                $('.image-preview').html(preview);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
   </script>
 </body>
 </html>

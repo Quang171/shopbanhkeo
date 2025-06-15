@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include "../database.php";
 ?>
 <?php
 
@@ -7,7 +7,7 @@ class sanpham {
     private $db;
 
     public function __construct() {
-        $this->db = new Database();
+        $this->db = new database();
     }
     public function show_danhmuc(){
         $query = "SELECT * FROM tbl_danhmuc ORDER BY danhmuc_id DESC";
@@ -20,6 +20,19 @@ class sanpham {
         $result = $this->db->select($query);
         return $result; 
     }
+
+    public function show_sanpham(){
+    $query = "SELECT tbl_sanpham1.*, tbl_danhmuc.danhmuc_name, tbl_loaisp.loaisp_name 
+              FROM tbl_sanpham1 
+              INNER JOIN tbl_danhmuc ON tbl_sanpham1.danhmuc_id = tbl_danhmuc.danhmuc_id 
+              INNER JOIN tbl_loaisp ON tbl_sanpham1.loaisp_id = tbl_loaisp.loaisp_id 
+              ORDER BY tbl_sanpham1.sanpham_id DESC";
+    
+    $result = $this->db->select($query);
+    return $result;
+}
+    
+    
     public function insert_sanpham(){
         $sanpham_name = $_POST['sanpham_name'];
         $danhmuc_id = $_POST['danhmuc_id'];
@@ -28,7 +41,7 @@ class sanpham {
         $sanpham_discount = $_POST['sanpham_discount'];
         $sanpham_mota = $_POST['sanpham_mota'];
         $sanpham_img = $_FILES['sanpham_img']['name'];
-        move_uploaded_file($_FILES['sanpham_img']['tmp_name'], "uploads/".$_FILES['sanpham_img']['name']);
+        move_uploaded_file($_FILES['sanpham_img']['tmp_name'], "../uploads/".$_FILES['sanpham_img']['name']);
 
 
         $query = "INSERT INTO tbl_sanpham1(
@@ -56,7 +69,19 @@ class sanpham {
         return $result;
 
     }
-    }
+
+    // public function show_sanpham_by_danhmuc($danhmuc_id) {
+    //     $query = "SELECT tbl_sanpham1.*, tbl_danhmuc.danhmuc_name, tbl_loaisp.loaisp_name 
+    //               FROM tbl_sanpham1 
+    //               INNER JOIN tbl_danhmuc ON tbl_sanpham1.danhmuc_id = tbl_danhmuc.danhmuc_id 
+    //               INNER JOIN tbl_loaisp ON tbl_sanpham1.loaisp_id = tbl_loaisp.loaisp_id 
+    //               WHERE tbl_sanpham1.danhmuc_id = '$danhmuc_id' 
+    //               ORDER BY tbl_sanpham1.sanpham_id DESC";
+    //     $result = $this->db->select($query);
+    //     return $result;
+    // }
+
+}
 
 
 

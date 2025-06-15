@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
 
 ?>
 
-<div class="admin-content-rignt">
+<div class="admin-content-right">
             <div class="admin-content-right-Themdanhmuc">
                 <h1>Thêm danh mục</h1>
                 <form action="" method="post">

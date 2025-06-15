@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
                 <div class="loaisp">
 
                     <h1>Thêm loại sản phẩm</h1> <br>
-                    <form action="" method="post">
+                    <form action="" method="post">    <!--xỬ dung post để gửi dữ liệu-->
                         <select name="danhmuc_id" id="">
                             <option value="#">--Chọn danh mục</option>
                             <?php
